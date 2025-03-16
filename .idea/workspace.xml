@@ -5,20 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8ba0f04-8638-4ef2-a555-a090fe9ed440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/datas.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parts/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parts/functions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parts/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parts/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/banner1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/banners/banner1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/banner2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/banners/banner2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/banner3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/banners/banner3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/portfolio.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/portfolio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/datas.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/datas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/portfolio8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/portfolio/portfolio8.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kontakt.html" beforeDir="false" afterPath="$PROJECT_DIR$/kontakt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/otazky.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kontakt.php" beforeDir="false" afterPath="$PROJECT_DIR$/kontakt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parts/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio.php" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qna.php" beforeDir="false" afterPath="$PROJECT_DIR$/qna.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thankyou.html" beforeDir="false" afterPath="$PROJECT_DIR$/thankyou.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thankyou.php" beforeDir="false" afterPath="$PROJECT_DIR$/thankyou.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,31 +49,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.index.html.executor": "Run",
-    "JavaScript Debug.index.php.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/pridanie-pozdravu",
-    "last_opened_file_path": "C:/xampp/htdocs/sablona",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.php.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/dynamicka-stranka&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/sablona&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\sablona\img\portfolio" />
       <recent name="C:\xampp\htdocs\sablona\img\banners" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHP Script.functions.php">
+    <configuration name="functions.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/parts/functions.php">
+      <method v="2" />
+    </configuration>
     <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/index.php">
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.functions.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -78,6 +93,9 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="PHP" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b8ba0f04-8638-4ef2-a555-a090fe9ed440" name="Changes" comment="" />
@@ -93,6 +111,9 @@
       <workItem from="1741352872504" duration="8000" />
       <workItem from="1741352886036" duration="4000" />
       <workItem from="1741902249027" duration="4877000" />
+      <workItem from="1741907639384" duration="273000" />
+      <workItem from="1741956152033" duration="618000" />
+      <workItem from="1742078543437" duration="5581000" />
     </task>
     <servers />
   </component>

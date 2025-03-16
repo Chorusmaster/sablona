@@ -46,26 +46,81 @@ function insertQnA(){
     echo '</section>';
 }
 
-function insertPortfolio() {
+function insertPortfolio(int $cols = 4, int $rows = 2) {
     $json = file_get_contents("data/datas.json");
     $data = json_decode($json, true);
-    $nadpisy = $data["portfolio_nadpisy"];
-    $id = $data["portfolio_id"];
+    $data = $data["portfolio"];
+    $index = 0;
 
-    echo '<div class="row">';
-    for ($i = 0; $i < 4; $i++){
-        echo '<div class="col-25 portfolio text-white text-center" id=' . $id[$i] . '>
-            ' . $nadpisy[$i] . '
-        </div>';
+    for ($i = 0; $i < $rows; $i++) {
+        echo '<div class="row">';
+        for ($j = 0; $j < $cols; $j++) {
+            echo '<a href="' . $data[$index][2] .'" class="col-25 portfolio text-white text-center" id=' . $data[$index][1] . '>
+            ' . $data[$index][0] . '
+        </a>';
+        $index++;
+        }
+        echo '</div>';
     }
-    echo '</div>';
+}
 
-    echo '<div class="row">';
-    for ($i = 4; $i < 8; $i++){
-        echo '<div class="col-25 portfolio text-white text-center" id=' . $id[$i] . '>
-            ' . $nadpisy[$i] . '
-        </div>';
+function getCSS(){
+    $jsonStr = file_get_contents("data/datas.json");
+    $data = json_decode($jsonStr, true);
+    $stranka = basename($_SERVER['REQUEST_URI'], ".php");
+    if ($stranka == "sablona") $stranka = "index";
+
+    $suboryCSS = $data['stranky'][$stranka];
+    foreach ($suboryCSS as $subor) {
+        echo "<link rel='stylesheet' href='$subor'>";
     }
-    echo '</div>';
+}
+
+
+function validateMenuType(string $type) : bool
+{
+    $menuTypes = [
+        'header',
+        'footer'
+    ];
+    if (in_array($type, $menuTypes)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getMenuData(string $type) : array
+{
+    $menu = [];
+    if (validateMenuType($type)) {
+        if ($type == "header") {
+            $menu = [
+                'home' => [
+                    'name' => 'Domov',
+                    'path' => 'index.php',
+                ],
+                'portfolio' => [
+                    'name' => 'Portfólio',
+                    'path' => 'portfolio.php',
+                ],
+                'qna' => [
+                    'name' => 'Q&A',
+                    'path' => 'qna.php',
+                ],
+                'kontakt' => [
+                    'name' => 'Kontakt',
+                    'path' => 'kontakt.php',
+                ],
+            ];
+        }
+    }
+    return $menu;
+}
+
+function printMenu(array $menu){
+    foreach($menu as $menuName => $menuData) {
+        echo '<li><a href="' . $menuData['path'] . '">' . $menuData['name'] . '</a></li>';
+    }
 }
 ?>
