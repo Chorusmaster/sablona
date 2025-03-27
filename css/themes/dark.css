@@ -1,0 +1,35 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #373737;
+    color: white;
+}
+
+header {
+    background-color: #606060;
+}
+
+.main-menu li a{
+    text-decoration: none;
+    color:white;
+}
+
+main section:nth-child(even){
+    background-color: #292929;
+}
+
+/*Otázky a odpovede*/
+
+.question{
+    background-color: #292929;
+    color:white;
+}
+
+.accordion.active .answer{
+    background-color: #505050;
+    color: white;
+}
+
+.question:hover,
+.accordion.active .question{
+    background-color: #393939;
+}
