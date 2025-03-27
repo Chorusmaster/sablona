@@ -25,6 +25,7 @@ $statement = $conn->prepare($sql);
 
 try {
     $insert = $statement->execute();
+    //správna téma pre kontakt
     $location = "Location: http://localhost/sablona/thankyou.php" . "?theme=" . $_GET['theme'];
     header($location);
     return $insert;
