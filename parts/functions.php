@@ -70,7 +70,7 @@ function insertPortfolio()
 }
 
 function getCSS(){
-    $theme = $_GET["theme"];
+    $theme = $_GET["theme"]; //načítavame tému z GET každú stránku
     $jsonStr = file_get_contents("data/datas.json");
     $data = json_decode($jsonStr, true);
     $stranka = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), ".php");
@@ -80,7 +80,7 @@ function getCSS(){
         echo "<link rel='stylesheet' href='$subor'>";
     }
 
-    $theme_css = $theme === "dark" ? "css/themes/dark.css" : "css/themes/light.css";
+    $theme_css = $theme === "dark" ? "css/themes/dark.css" : "css/themes/light.css"; //stránky so svetlou/tmavou témou
     echo "<link rel='stylesheet' href='$theme_css'>";
 }
 

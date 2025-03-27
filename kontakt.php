@@ -27,7 +27,9 @@ include "./parts/nav.php";
         </div>
         <div class="col-50 text-right">
           <h3>Napíšte nám</h3>
-          <form id="contact" method="post" action="db/odovzdanieFormulara.php<?php echo "?theme=" . $_GET['theme']?>">
+          <form id="contact" method="post" action="db/odovzdanieFormulara.php<?php echo "?theme=" . $_GET['theme']
+            //ak neaplikujeme tému na odovzdanie formulára, nebude aplikovaná aj na thankyou page
+          ?>">
             <input name="meno" type="text" placeholder="Vaše meno" id ="meno"  required><br>
             <input name="email" type="email" placeholder="Váš email" id="email" required><br>
             <textarea name="sprava" placeholder="Vaša správa" id="sprava"></textarea><br>
