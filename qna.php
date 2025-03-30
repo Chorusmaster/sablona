@@ -23,7 +23,7 @@ include "./parts/nav.php";
 
             $qna = new QnA();
             //$qna->resetQnA();
-            $qna->insertQnA();
+            $qna->insertQnA(); //Najprv vložíme nové dáta (ak sú), potom zobrazíme otázky a odpovede
             $qna->showQnA();
         ?>
       </section>
