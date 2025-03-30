@@ -31,7 +31,7 @@ class QnA{
         }
     }
 
-    private function reconnect(){
+    private function reconnect(){ // overuje či bolo spojenie zatvorené. Ak áno, otvorí ho ešte raz
         if (is_null($this->conn)) {
             $this->connect();
         }
@@ -42,12 +42,15 @@ class QnA{
         $this->reconnect();
 
         try {
+            //získame dáta z databázy
             $sql = "SELECT otazka, odpoved FROM qna";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
 
+            // vkladáme získane dáta sem
             $qna_data = $statement->fetchAll();
 
+            // vrácame získaný array
             return $qna_data;
 
         } catch (PDOException $e) {
@@ -61,8 +64,10 @@ class QnA{
     }
 
     public function showQnA() {
+        //získame array s dátami
         $qna_data = $this->getQnA();
 
+        //ak bolo niečo s databázy získané, vypíšeme to
         if (!is_null($qna_data)) {
             echo '<section class="container">';
             for ($i = 0; $i < count($qna_data); $i++) {
@@ -98,16 +103,20 @@ class QnA{
 
             for ($i = 0; $i < count($otazky); $i++) {
 
+                //či je otázka unikátna
                 $isDifferent = true;
 
+                //overujeme, čí kľúč existuje aby sme predišli chýbam, spojeným s rôzným počtom záznamov v json a databáze
                 if (array_key_exists($i, $qna_data)) {
                     for ($j = 0; $j < count($qna_data); $j++) {
                         if ($otazky[$i] == $qna_data[$j]["otazka"] && $odpovede[$i] == $qna_data[$j]["odpoved"]) {
+                            //ak program nášiel zhodné údaje, označí otázku v tomto opakovani vonkajšieho cyklu ako neunikátnu
                             $isDifferent = false;
                         }
                     }
                 }
 
+                //ak je otázka unikátna, resp. ešte nie je v databáze
                 if ($isDifferent) {
                     $statement->bindParam(':otazka', $otazky[$i]);
                     $statement->bindParam(':odpoved', $odpovede[$i]);
@@ -125,14 +134,14 @@ class QnA{
         }
     }
 
-    public function resetQnA(){
+    public function resetQnA(){ //Pomocna funkcia pre testovanie - mázanie všetkých údajov
 
         $this->reconnect();
 
         try {
-            $sql = "DELETE FROM qna";
+            $sql = "DELETE FROM qna"; //Zmazať všetko z tabuľky
             $statement1 = $this->conn->prepare($sql);
-            $sql = "ALTER TABLE qna AUTO_INCREMENT = 1";
+            $sql = "ALTER TABLE qna AUTO_INCREMENT = 1"; //Nastaviť auto-increment na hodnotu 1, resp. resetovať ho
             $statement2 = $this->conn->prepare($sql);
             $statement1->execute();
             $statement2->execute();
