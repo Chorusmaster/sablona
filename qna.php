@@ -18,8 +18,13 @@ include "./parts/nav.php";
     </section>
       <section class="container">
         <?php
-            require_once "./parts/functions.php";
-            insertQnA()
+            include_once "classes/QnA.php";
+            use otazkyodpovede\QnA;
+
+            $qna = new QnA();
+            //$qna->resetQnA();
+            $qna->insertQnA();
+            $qna->showQnA();
         ?>
       </section>
     </section>
