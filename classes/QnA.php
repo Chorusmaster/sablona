@@ -1,50 +1,30 @@
 <?php
 
 namespace otazkyodpovede;
-define('__ROOT__', dirname(__FILE__, 2));
-require_once(__ROOT__.'/db/config.php');
+error_reporting(E_ALL);
+ini_set('display_errors', "On");
+define('__LOCAL_ROOT__', dirname(__FILE__, 2));
+require_once(__LOCAL_ROOT__.'/db/config.php');
+require_once(__LOCAL_ROOT__.'/classes/Database.php');
 
-use Exception;
+use Database;
 use PDO;
 use PDOException;
 
-class QnA{
-    private $conn;
+class QnA extends Database{
+    protected $connection;
 
     public function __construct() {
         $this->connect();
-    }
-
-    private function connect() {
-        $config = DATABASE;
-        $options = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        );
-
-        try {
-            $this->conn = new PDO('mysql:host=' . $config['HOST'] . ';dbname=' .
-                $config['DBNAME'] . ';port=' . $config['PORT'], $config['USER_NAME'],
-                $config['PASSWORD'], $options);
-        } catch (PDOException $e) {
-            die("Chyba pripojenia: " . $e->getMessage());
-        }
-    }
-
-    private function reconnect(){ // overuje či bolo spojenie zatvorené. Ak áno, otvorí ho ešte raz
-        if (is_null($this->conn)) {
-            $this->connect();
-        }
+        $this->connection = $this->getConnection();
     }
 
     public function getQnA(){
 
-        $this->reconnect();
-
         try {
             //získame dáta z databázy
             $sql = "SELECT otazka, odpoved FROM qna";
-            $statement = $this->conn->prepare($sql);
+            $statement = $this->connection->prepare($sql);
             $statement->execute();
 
             // vkladáme získane dáta sem
@@ -58,8 +38,6 @@ class QnA{
 
             return null;
 
-        } finally {
-            $this->conn = null;
         }
     }
 
@@ -82,13 +60,14 @@ class QnA{
             }
             echo '</section>';
 
+        } else {
+            echo "Načítať dáta sa nepodarilo";
         }
     }
 
     public function insertQnA(){
 
         $qna_data = $this->getQnA();
-        $this->reconnect();
 
         try {
             $data = json_decode(file_get_contents
@@ -96,10 +75,10 @@ class QnA{
             $otazky = $data["otazky"];
             $odpovede = $data["odpovede"];
 
-            $this->conn->beginTransaction();
+            $this->connection->beginTransaction();
 
             $sql = "INSERT INTO qna (otazka, odpoved) VALUES (:otazka, :odpoved)";
-            $statement = $this->conn->prepare($sql);
+            $statement = $this->connection->prepare($sql);
 
             for ($i = 0; $i < count($otazky); $i++) {
 
@@ -123,20 +102,17 @@ class QnA{
                     $statement->execute();
                 }
             }
-            $this->conn->commit();
+            $this->connection->commit();
 
         } catch (PDOException $e) {
             echo "Chyba pri vkladaní dát do databázy: " . $e->getMessage();
-            $this->conn->rollback();
+            $this->connection->rollback();
 
-        } finally {
-            $this->conn = null;
         }
     }
 
-    public function resetQnA(){ //Pomocna funkcia pre testovanie - mázanie všetkých údajov
-
-        $this->reconnect();
+    public function resetQnA()
+    { //Pomocna funkcia pre testovanie - mázanie všetkých údajov
 
         try {
             $sql = "DELETE FROM qna"; //Zmazať všetko z tabuľky
@@ -151,8 +127,6 @@ class QnA{
         } catch (PDOException $e) {
             echo "Chyba pri mazaní dát v databáze: " . $e->getMessage();
 
-        } finally {
-            $this->conn = null;
         }
     }
 }
